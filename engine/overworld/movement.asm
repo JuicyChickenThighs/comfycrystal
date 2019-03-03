@@ -56,41 +56,87 @@ MovementPointers:
 	dw Movement_fast_jump_step_up     ; 35
 	dw Movement_fast_jump_step_left   ; 36
 	dw Movement_fast_jump_step_right  ; 37
-	dw Movement_remove_sliding        ; 38
-	dw Movement_set_sliding           ; 39
-	dw Movement_remove_fixed_facing   ; 3a
-	dw Movement_fix_facing            ; 3b
-	dw Movement_show_object           ; 3c
-	dw Movement_hide_object           ; 3d
-	dw Movement_step_sleep_1          ; 3e
-	dw Movement_step_sleep_2          ; 3f
-	dw Movement_step_sleep_3          ; 40
-	dw Movement_step_sleep_4          ; 41
-	dw Movement_step_sleep_5          ; 42
-	dw Movement_step_sleep_6          ; 43
-	dw Movement_step_sleep_7          ; 44
-	dw Movement_step_sleep_8          ; 45
-	dw Movement_step_sleep            ; 46
-	dw Movement_step_end              ; 47
-	dw Movement_48                    ; 48
-	dw Movement_remove_object         ; 49
-	dw Movement_step_loop             ; 4a
-	dw Movement_4b                    ; 4b
-	dw Movement_teleport_from         ; 4c
-	dw Movement_teleport_to           ; 4d
-	dw Movement_skyfall               ; 4e
-	dw Movement_step_dig              ; 4f
-	dw Movement_step_bump             ; 50
-	dw Movement_fish_got_bite         ; 51
-	dw Movement_fish_cast_rod         ; 52
-	dw Movement_hide_emote            ; 53
-	dw Movement_show_emote            ; 54
-	dw Movement_step_shake            ; 55
-	dw Movement_tree_shake            ; 56
-	dw Movement_rock_smash            ; 57
-	dw Movement_return_dig            ; 58
-	dw Movement_skyfall_top           ; 59
+	dw Movement_stairs_step_down      ; 38
+	dw Movement_stairs_step_up        ; 39
+	dw Movement_stairs_step_left      ; 3a
+	dw Movement_stairs_step_right     ; 3b
+	dw Movement_remove_sliding        ; 3c
+	dw Movement_set_sliding           ; 3d
+	dw Movement_remove_fixed_facing   ; 3e
+	dw Movement_fix_facing            ; 3f
+	dw Movement_show_object           ; 40
+	dw Movement_hide_object           ; 41
+	dw Movement_step_sleep_1          ; 42
+	dw Movement_step_sleep_2          ; 43
+	dw Movement_step_sleep_3          ; 44
+    dw Movement_step_sleep_4          ; 45
+	dw Movement_step_sleep_5          ; 46
+	dw Movement_step_sleep_6          ; 47
+	dw Movement_step_sleep_7          ; 48
+	dw Movement_step_sleep_8          ; 49
+	dw Movement_step_sleep            ; 4a
+	dw Movement_step_end              ; 4b
+	dw Movement_48                    ; 4c
+	dw Movement_remove_object         ; 4d
+	dw Movement_step_loop             ; 4e
+	dw Movement_4b                    ; 4f
+	dw Movement_teleport_from         ; 50
+	dw Movement_teleport_to           ; 51
+	dw Movement_skyfall               ; 52
+	dw Movement_step_dig              ; 53
+	dw Movement_step_bump             ; 54
+	dw Movement_fish_got_bite         ; 55
+	dw Movement_fish_cast_rod         ; 56
+	dw Movement_hide_emote            ; 57
+	dw Movement_show_emote            ; 58
+	dw Movement_step_shake            ; 59
+	dw Movement_tree_shake            ; 5a
+	dw Movement_rock_smash            ; 5b
+	dw Movement_return_dig            ; 5c
+	dw Movement_skyfall_top           ; 5d
 
+Movement_stairs_step_down:
+	ld a, STEP_WALK << 2 | DOWN
+	jp DiagonalStairsStep
+
+Movement_stairs_step_up:
+	ld a, STEP_WALK << 2 | UP
+	jp DiagonalStairsStep
+
+Movement_stairs_step_left:
+	ld a, STEP_WALK << 2 | LEFT
+	jp DiagonalStairsStep
+
+Movement_stairs_step_right:
+	ld a, STEP_WALK << 2 | RIGHT
+	jp DiagonalStairsStep
+
+DiagonalStairsStep:
+	call InitStep
+	ld hl, OBJECT_1F
+	add hl, bc
+	ld [hl], $0
+
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], OBJECT_ACTION_STEP
+
+	ld hl, wCenteredObject
+	ldh a, [hMapObjectIndexBuffer]
+	cp [hl]
+	jr z, .player
+
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_NPC_DIAGONAL_STAIRS
+	ret
+
+.player
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_PLAYER_DIAGONAL_STAIRS
+	ret
+	
 Movement_teleport_from:
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc

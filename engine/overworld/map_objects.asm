@@ -1096,6 +1096,94 @@ StepTypesJumptable:
 	dw StepType17 ; 17
 	dw StepType18 ; 18
 	dw SkyfallTop ; 19
+	dw NPCDiagonalStairs
+	dw PlayerDiagonalStairs
+	
+NPCDiagonalStairs:
+	; TODO
+	ret
+
+PlayerDiagonalStairs:
+	call Field1cAnonymousJumptable
+; anonymous dw
+	dw .InitHorizontal1
+	dw .StepHorizontal
+	dw .InitHorizontal2
+	dw .StepHorizontal
+	dw .InitVertical
+	dw .StepVertical
+
+.InitHorizontal2:
+	call GetNextTile
+.InitHorizontal1:
+	ld hl, wPlayerStepFlags
+	set 7, [hl]
+	call IncrementObjectStructField1c
+.StepHorizontal:
+	call UpdateDiagonalStairsPosition
+	call UpdatePlayerStep
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	ret nz
+	call CopyNextCoordsTileToStandingCoordsTile
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	res 3, [hl]
+	ld hl, wPlayerStepFlags
+	set 6, [hl]
+	set 4, [hl]
+	jp IncrementObjectStructField1c
+
+.InitVertical:
+ 	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], OBJECT_ACTION_STAND
+
+; If you start on the bottom half of a block, you go up;
+; if you start on the top half, you go down.
+	ld a, [wMetatileStandingY]
+	and a
+	ld a, DOWN
+	jr z, .got_dir
+	ld a, UP
+.got_dir
+	ld hl, OBJECT_DIRECTION_WALKING
+	add hl, bc
+	ld [hl], a
+
+	call GetNextTile
+	ld hl, wPlayerStepFlags
+	set 7, [hl]
+	call IncrementObjectStructField1c
+.StepVertical:
+	call UpdateDiagonalStairsPosition
+	call UpdatePlayerStep
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	ret nz
+	ld hl, wPlayerStepFlags
+	set 6, [hl]
+	call CopyNextCoordsTileToStandingCoordsTile
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_SLEEP
+	ret
+
+UpdateDiagonalStairsPosition:
+	ld a, [wMetatileStandingY]
+	and a
+	ld e, 1
+	jr z, .goingdown
+	ld e, -1
+.goingdown
+	ld hl, OBJECT_SPRITE_Y_OFFSET
+	add hl, bc
+	ld a, [hl]
+	add e
+	ld [hl], a
+	ret
 
 WaitStep_InPlace:
 	ld hl, OBJECT_STEP_DURATION
