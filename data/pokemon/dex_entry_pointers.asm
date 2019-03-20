@@ -151,9 +151,6 @@ PokedexDataPointerTable:
 	dw DragonitePokedexEntry
 	dw MewtwoPokedexEntry
 	dw MewPokedexEntry
-	dw ChikoritaPokedexEntry
-	dw BayleefPokedexEntry
-	dw MeganiumPokedexEntry
 	dw CyndaquilPokedexEntry
 	dw QuilavaPokedexEntry
 	dw TyphlosionPokedexEntry

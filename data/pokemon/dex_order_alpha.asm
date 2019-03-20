@@ -11,7 +11,6 @@ AlphabeticalPokedexOrder:
 	db ARIADOS
 	db ARTICUNO
 	db AZUMARILL
-	db BAYLEEF
 	db BEEDRILL
 	db BELLOSSOM
 	db BELLSPROUT
@@ -25,7 +24,6 @@ AlphabeticalPokedexOrder:
 	db CHARIZARD
 	db CHARMANDER
 	db CHARMELEON
-	db CHIKORITA
 	db CHINCHOU
 	db CLEFABLE
 	db CLEFAIRY
@@ -128,7 +126,6 @@ AlphabeticalPokedexOrder:
 	db MAREEP
 	db MARILL
 	db MAROWAK
-	db MEGANIUM
 	db MEOWTH
 	db METAPOD
 	db MEW

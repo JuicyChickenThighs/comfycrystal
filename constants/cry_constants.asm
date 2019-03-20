@@ -53,7 +53,7 @@
 	const CRY_SENTRET
 	const CRY_SLOWKING
 	const CRY_CYNDAQUIL
-	const CRY_CHIKORITA
+	const CRY_IGGLYBUFF
 	const CRY_TOTODILE
 	const CRY_GLIGAR
 	const CRY_CLEFFA

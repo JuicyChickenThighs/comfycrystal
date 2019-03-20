@@ -28,8 +28,8 @@ MountMoon_MapScripts:
 	closetext
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	checkevent EVENT_GOT_BULBASAUR_FROM_ELM
+	iftrue .Bulbasaur
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
 	setlasttalked MOUNTMOON_SILVER
 	loadtrainer RIVAL2, RIVAL2_1_TOTODILE
@@ -41,13 +41,13 @@ MountMoon_MapScripts:
 .Totodile:
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
 	setlasttalked MOUNTMOON_SILVER
-	loadtrainer RIVAL2, RIVAL2_1_CHIKORITA
+	loadtrainer RIVAL2, RIVAL2_1_BULBASAUR
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .FinishBattle
 
-.Chikorita:
+.Bulbasaur:
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
 	setlasttalked MOUNTMOON_SILVER
 	loadtrainer RIVAL2, RIVAL2_1_CYNDAQUIL

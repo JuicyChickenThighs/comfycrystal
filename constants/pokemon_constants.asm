@@ -171,9 +171,6 @@
 	const MEWTWO     ; 96
 	const MEW        ; 97
 JOHTO_POKEMON EQU const_value
-	const CHIKORITA  ; 98
-	const BAYLEEF    ; 99
-	const MEGANIUM   ; 9a
 	const CYNDAQUIL  ; 9b
 	const QUILAVA    ; 9c
 	const TYPHLOSION ; 9d

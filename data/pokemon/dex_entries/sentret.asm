@@ -1,10 +1,10 @@
-	db "SCOUT@" ; species name
-	dw 207, 130 ; height, weight
+	db "RACCOON@" ; species name
+	dw 104, 175 ; height, weight
 
-	db   "When acting as a"
-	next "lookout, it warns"
-	next "others of danger"
+	db   "This #MON is"
+	next "always curious."
+	next "It is also very"
 
-	page "by screeching and"
-	next "hitting the ground"
-	next "with its tail.@"
+	page "good at finding"
+	next "nearby items with"
+	next "its nose.@"

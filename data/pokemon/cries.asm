@@ -156,9 +156,6 @@ PokemonCries::
 	mon_cry CRY_BULBASAUR,   $03c,  $140 ; DRAGONITE
 	mon_cry CRY_PARAS,       $099,  $17f ; MEWTWO
 	mon_cry CRY_PARAS,       $0ee,  $17f ; MEW
-	mon_cry CRY_CHIKORITA,  -$010,  $0b0 ; CHIKORITA
-	mon_cry CRY_CHIKORITA,  -$022,  $120 ; BAYLEEF
-	mon_cry CRY_CHIKORITA,  -$0b7,  $200 ; MEGANIUM
 	mon_cry CRY_CYNDAQUIL,   $347,  $080 ; CYNDAQUIL
 	mon_cry CRY_CYNDAQUIL,   $321,  $120 ; QUILAVA
 	mon_cry CRY_TYPHLOSION,  $f00,  $0d4 ; TYPHLOSION
@@ -178,7 +175,7 @@ PokemonCries::
 	mon_cry CRY_CYNDAQUIL,   $2d0,  $110 ; LANTURN
 	mon_cry CRY_PICHU,       $000,  $140 ; PICHU
 	mon_cry CRY_CLEFFA,      $061,  $091 ; CLEFFA
-	mon_cry CRY_CHIKORITA,   $0e8,  $0e8 ; IGGLYBUFF
+	mon_cry CRY_IGGLYBUFF,   $0e8,  $0e8 ; IGGLYBUFF
 	mon_cry CRY_TOGEPI,      $010,  $100 ; TOGEPI
 	mon_cry CRY_TOGETIC,     $03b,  $038 ; TOGETIC
 	mon_cry CRY_NATU,       -$067,  $100 ; NATU

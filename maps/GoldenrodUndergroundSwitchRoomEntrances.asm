@@ -168,8 +168,8 @@ UndergroundSilverBattleScript:
 	setevent EVENT_RIVAL_GOLDENROD_UNDERGROUND
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	checkevent EVENT_GOT_BULBASAUR_FROM_ELM
+	iftrue .Bulbasaur
 	winlosstext UndergroundSilverWinText, UndergroundSilverLossText
 	setlasttalked GOLDENRODUNDERGROUNDSWITCHROOMENTRANCES_SILVER
 	loadtrainer RIVAL1, RIVAL1_4_TOTODILE
@@ -181,13 +181,13 @@ UndergroundSilverBattleScript:
 .Totodile:
 	winlosstext UndergroundSilverWinText, UndergroundSilverLossText
 	setlasttalked GOLDENRODUNDERGROUNDSWITCHROOMENTRANCES_SILVER
-	loadtrainer RIVAL1, RIVAL1_4_CHIKORITA
+	loadtrainer RIVAL1, RIVAL1_4_BULBASAUR
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .FinishRivalBattle
 
-.Chikorita:
+.Bulbasaur:
 	winlosstext UndergroundSilverWinText, UndergroundSilverLossText
 	setlasttalked GOLDENRODUNDERGROUNDSWITCHROOMENTRANCES_SILVER
 	loadtrainer RIVAL1, RIVAL1_4_CYNDAQUIL

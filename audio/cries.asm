@@ -44,10 +44,10 @@ Cry_Cyndaquil:
 	musicheader 1, 6, Cry_Cyndaquil_Ch6
 	musicheader 1, 8, Cry_Cyndaquil_Ch8
 
-Cry_Chikorita:
-	musicheader 3, 5, Cry_Chikorita_Ch5
-	musicheader 1, 6, Cry_Chikorita_Ch6
-	musicheader 1, 8, Cry_Chikorita_Ch8
+Cry_Igglybuff:
+	musicheader 3, 5, Cry_Igglybuff_Ch5
+	musicheader 1, 6, Cry_Igglybuff_Ch6
+	musicheader 1, 8, Cry_Igglybuff_Ch8
 
 Cry_Gligar:
 	musicheader 2, 5, Cry_Gligar_Ch5
@@ -476,9 +476,9 @@ Cry_Gligar_Ch8:
 	noise C#,  1, $93, $4f
 	endchannel
 
-Cry_Chikorita_Ch5:
+Cry_Igglybuff_Ch5:
 	tone $0020
-Cry_Chikorita_Ch6:
+Cry_Igglybuff_Ch6:
 	sound_duty 1, 0, 2, 0
 	sound __,  3, $c8, $0641
 	sound __,  3, $48, $0641
@@ -487,7 +487,7 @@ Cry_Chikorita_Ch6:
 	sound __,  5, $f1, $078b
 	endchannel
 
-Cry_Chikorita_Ch8:
+Cry_Igglybuff_Ch8:
 	noise __,  5, $91, $10
 	noise __,  9, $94, $3
 	endchannel

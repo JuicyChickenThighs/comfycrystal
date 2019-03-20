@@ -304,12 +304,6 @@ PokemonPicPointers::
 	dba_pic MewtwoBackpic
 	dba_pic MewFrontpic
 	dba_pic MewBackpic
-	dba_pic ChikoritaFrontpic
-	dba_pic ChikoritaBackpic
-	dba_pic BayleefFrontpic
-	dba_pic BayleefBackpic
-	dba_pic MeganiumFrontpic
-	dba_pic MeganiumBackpic
 	dba_pic CyndaquilFrontpic
 	dba_pic CyndaquilBackpic
 	dba_pic QuilavaFrontpic

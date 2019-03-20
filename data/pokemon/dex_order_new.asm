@@ -1,9 +1,6 @@
 ; Every Pokémon sorted in New Pokédex Order.
 
 NewPokedexOrder:
-	db CHIKORITA
-	db BAYLEEF
-	db MEGANIUM
 	db CYNDAQUIL
 	db QUILAVA
 	db TYPHLOSION
