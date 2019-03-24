@@ -625,6 +625,14 @@ Continue_DisplayGameTime:
 	jp PrintNum
 
 OakSpeech:
+	; add a potion to the player's PC
+	ld a, POTION
+	ld [wCurItem], a
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, wPCItems
+	call ReceiveItem
+
 	farcall InitClock
 	call RotateFourPalettesLeft
 	call ClearTileMap
