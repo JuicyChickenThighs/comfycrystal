@@ -625,6 +625,14 @@ Continue_DisplayGameTime:
 	jp PrintNum
 
 OakSpeech:
+	; add a potion to the player's PC
+	ld a, POTION
+	ld [wCurItem], a
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, wPCItems
+	call ReceiveItem
+
 	farcall InitClock
 	call RotateFourPalettesLeft
 	call ClearTileMap
@@ -649,7 +657,7 @@ OakSpeech:
 	call RotateThreePalettesRight
 	call ClearTileMap
 
-	ld a, WOOPER
+	ld a, SENTRET
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData
@@ -698,6 +706,39 @@ OakSpeech:
 	ld hl, OakText6
 	call PrintText
 	call NamePlayer
+
+	ld hl, OakTextYourNameIs
+	call PrintText
+	call RotateThreePalettesRight
+	call ClearTileMap
+
+	xor a
+	ld [wCurPartySpecies], a
+	ld a, RIVAL1
+	ld [wTrainerClass], a
+	call Intro_PrepTrainerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call Intro_RotatePalettesLeftFrontpic
+
+	ld hl, OakTextIntroduceRival
+	call PrintText
+	call NameRival
+
+	ld hl, OakTextOkHisNameIs
+	call PrintText
+	call RotateThreePalettesRight
+	call ClearTileMap
+
+	xor a
+	ld [wCurPartySpecies], a
+	farcall DrawIntroPlayerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call Intro_RotatePalettesLeftFrontpic
+
 	ld hl, OakText7
 	call PrintText
 	ret
@@ -709,7 +750,7 @@ OakText1:
 OakText2:
 	text_far _OakText2
 	text_asm
-	ld a, WOOPER
+	ld a, SENTRET
 	call PlayMonCry
 	call WaitSFX
 	ld hl, OakText3
@@ -729,6 +770,18 @@ OakText5:
 
 OakText6:
 	text_far _OakText6
+	text_end
+
+OakTextYourNameIs:
+	text_far _OakTextYourNameIs
+	text_end
+
+OakTextIntroduceRival:
+	text_far _OakTextIntroduceRival
+	text_end
+
+OakTextOkHisNameIs:
+	text_far _OakTextOkHisNameIs
 	text_end
 
 OakText7:
@@ -780,6 +833,46 @@ NamePlayer:
 .Kris:
 	db "KRIS@@@@@@@"
 
+NameRival:
+	farcall MovePlayerPicRight
+	farcall ShowRivalNamingChoices
+	ld a, [wMenuCursorY]
+	dec a
+	jr z, .NewName
+	call StoreRivalName
+	farcall ApplyMonOrTrainerPals
+	farcall MovePlayerPicLeft
+	ret
+
+.NewName:
+	ld b, NAME_RIVAL
+	ld de, wRivalName
+	farcall NamingScreen
+
+	call RotateThreePalettesRight
+	call ClearTileMap
+
+	call LoadFontsExtra
+	call WaitBGMap
+
+	xor a
+	ld [wCurPartySpecies], a
+	ld a, RIVAL1
+	ld [wTrainerClass], a
+	call Intro_PrepTrainerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call RotateThreePalettesLeft
+
+	ld hl, wRivalName
+	ld de, .Rival
+	call InitName
+	ret
+
+.Rival:
+	db "PRESTON@@@@"
+
 Unreferenced_Function60e9:
 	call LoadMenuHeader
 	call VerticalMenu
@@ -795,6 +888,16 @@ StorePlayerName:
 	ld hl, wPlayerName
 	call ByteFill
 	ld hl, wPlayerName
+	ld de, wStringBuffer2
+	call CopyName2
+	ret
+
+StoreRivalName:
+	ld a, "@"
+	ld bc, NAME_LENGTH
+	ld hl, wRivalName
+	call ByteFill
+	ld hl, wRivalName
 	ld de, wStringBuffer2
 	call CopyName2
 	ret
