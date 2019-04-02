@@ -245,9 +245,10 @@ JOHTO_POKEMON EQU const_value
 	const SANDYGAST  ; df
 	const PALOSSAND  ; e0
 	const SMEARGLE   ; e1
-	const BELDUM     ; e2
-	const METANG     ; e3
-	const METAGROSS  ; e4
+	const MR. MINE   ; e2
+	const BELDUM     ; e3
+	const METANG     ; e4
+	const METAGROSS  ; e5
 	const LARVITAR   ; e6
 	const PUPITAR    ; e7
 	const TYRANITAR  ; e8
