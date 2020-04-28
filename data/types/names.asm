@@ -10,7 +10,7 @@ TypeNames:
 	dw Bug
 	dw Ghost
 	dw Steel
-	dw Normal
+	dw Fairy
 	dw Normal
 	dw Normal
 	dw Normal
@@ -48,3 +48,4 @@ Ghost:     db "GHOST@"
 Steel:     db "STEEL@"
 Dragon:    db "DRAGON@"
 Dark:      db "DARK@"
+Fairy:     db "FAIRY@"
